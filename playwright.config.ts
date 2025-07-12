@@ -39,6 +39,7 @@ export default defineConfig({
     video: "retain-on-failure",
     screenshot: "only-on-failure",
     headless: true,
+    testIdAttribute: "data-test", // testId를 지칭하는 속성 변경
   },
 
   /* Configure projects for major browsers */
