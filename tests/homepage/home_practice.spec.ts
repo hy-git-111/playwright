@@ -36,3 +36,17 @@ test.describe("test home page", () => {
     await expect(page.getByRole("link", { name: "Wood Saw" })).toBeVisible;
   });
 });
+
+test.describe("home page customer auth", () => {
+  test.use({ storageState: ".auth/customer.json" });
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+  });
+
+  test("check customer is signed in", async ({ page }) => {
+    await expect(page.getByTestId("nav-sign-in")).not.toBeVisible();
+    await expect(page.getByRole("button", { name: "Jane Doe" })).toContainText(
+      "Jane Doe"
+    );
+  });
+});
