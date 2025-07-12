@@ -2,17 +2,11 @@
 node_modules
 .tmp
 npm-debug.log
-<<<<<<< Updated upstream
-=======
 
-# Playwright
->>>>>>> Stashed changes
+# playwright
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-<<<<<<< Updated upstream
 .auth/
-=======
->>>>>>> Stashed changes
 /tests/homepage/home.spec.ts-snapshots
