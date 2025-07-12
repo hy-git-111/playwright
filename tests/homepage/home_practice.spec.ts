@@ -1,9 +1,16 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("test home page", () => {
+test.describe("test home page with no auth", () => {
   // 브라우저 실행을 위한 반복 함수 작성
   test.beforeEach(async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/");
+  });
+
+  test("visual test", async ({ page }) => {
+    await page.waitForLoadState("networkidle"); // 네트워크 요청 완료 대기
+    await expect(page).toHaveScreenshot("home-page-no-auth.png", {
+      mask: [page.getByTitle("Practice Software Testing - Toolshop - v5.0")],
+    });
   });
 
   // 홈페이지 진입 확인
@@ -37,10 +44,18 @@ test.describe("test home page", () => {
   });
 });
 
+// 로그인 상태 확인
 test.describe("home page customer auth", () => {
   test.use({ storageState: ".auth/customer.json" });
   test.beforeEach(async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/");
+  });
+
+  test("visual test authorized", async ({ page }) => {
+    await page.waitForLoadState("networkidle"); // 네트워크 요청 완료 대기
+    await expect(page).toHaveScreenshot("home-page-with-auth.png", {
+      mask: [page.getByTitle("Practice Software Testing - Toolshop - v5.0")],
+    });
   });
 
   test("check customer is signed in", async ({ page }) => {
