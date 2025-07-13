@@ -10,3 +10,4 @@ npm-debug.log
 /playwright/.cache/
 .auth/
 /tests/homepage/home.spec.ts-snapshots
+/tests/homepage/home_practice.spec.ts-snapshots
